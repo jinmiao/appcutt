@@ -22,6 +22,7 @@
             <menu>
                 <item
                     android:id="@+id/nav_share"
+                    android:visible="false"
                     android:icon="@drawable/ic_share_grey_600_24dp"
                     android:title="@string/share" />
 
