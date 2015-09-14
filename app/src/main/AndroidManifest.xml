@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appcutt.demo">
+    package="com.appcutt.demo" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,25 +16,23 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/NoActionBarTheme">
-
+        android:theme="@style/NoActionBarTheme" >
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.PhotoDetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/NoActionBarTheme.Transparent" />
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -43,7 +42,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="eef593299f106222b116410ba972260f992134e5" />
@@ -53,6 +51,10 @@
             android:authorities="com.facebook.app.FacebookContentProvider464110687102972"
             android:exported="true" />
 
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

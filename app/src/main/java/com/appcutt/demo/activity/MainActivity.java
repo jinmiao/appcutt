@@ -85,11 +85,14 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
                 switch (itemId) {
                     case R.id.nav_home:
                         return true;
-                    case R.id.nav_favorite:
-                        AppUtils.showToast(R.string.coming_soon, MainActivity.this);
+                    case R.id.nav_product:
+                        AppUtils.showToast("product", MainActivity.this);
+                        return true;
+                    case R.id.nav_contact:
+                        AppUtils.showToast("contact", MainActivity.this);
                         return true;
                     case R.id.nav_settings:
-                        AppUtils.showToast(R.string.coming_soon, MainActivity.this);
+                        AppUtils.showToast("settings", MainActivity.this);
                         return true;
                 }
 
