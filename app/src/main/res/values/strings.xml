@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">XinJiaLi</string>
+    <string name="doraemon">Draemon</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="settings">Settings</string>
+
+    <string name="popular">250x400</string>
+    <string name="news">200x300</string>
+
+    <string name="colors">Colors</string>
+    <string name="photo_data">Photo data</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="identifier">Identifier</string>
+    <string name="owner">Owner</string>
+    <string name="secret">Secret</string>
+    <string name="server">Server id</string>
+    <string name="title">Title</string>
+    <string name="is_public">Public photo</string>
+    <string name="is_friend">Friend\'s photo</string>
+    <string name="is_family">Family\'s photo</string>
+    <string name="pallete">Color palette</string>
+
+    <string name="version_prefix">V</string>
+    <string name="coming_soon">Coming soon :)</string>
+    <string name="not_supported">Your phone is not supported :(</string>
+    <string name="copyed">Copied!</string>
+
+    <string name="github_repo">GitHub repository</string>
+
+    <!-- Shared elements -->
+    <string name="shared_element_photo">photo_element</string>
+
+    <string name="activity_transition_mills">200</string>
+
+    <string name="facebook_app_id">464110687102972</string>
+
+    <!-- Vector -->
+    <string name="path_pause">M 6,19 L 10,19 L 10,5 L 6,5 L 6,19 z M 14,19 L 18,19 L 18,5 L 14,5 L 14,19 z</string>
+    <string name="path_play">M 5, 18.06 L 12,18.06 L 12,5.94 L 12,5.94 L 5,18.06 z M 12,18.06 L 19,18.06 L 12,5.94 L 12,5.94 L 12,18.06 z</string>
+</resources>

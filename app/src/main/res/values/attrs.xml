@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="imageRatio" format="float" />
+        <attr name="autoScale" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="PhotoInfoView">
+        <attr name="iconSrc" format="reference" />
+        <attr name="subText" format="string" />
+        <attr name="titleText" format="string" />
+    </declare-styleable>
+
+</resources>
