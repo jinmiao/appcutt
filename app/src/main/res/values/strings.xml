@@ -46,4 +46,11 @@
     <!-- Vector -->
     <string name="path_pause">M 6,19 L 10,19 L 10,5 L 6,5 L 6,19 z M 14,19 L 18,19 L 18,5 L 14,5 L 14,19 z</string>
     <string name="path_play">M 5, 18.06 L 12,18.06 L 12,5.94 L 12,5.94 L 5,18.06 z M 12,18.06 L 19,18.06 L 12,5.94 L 12,5.94 L 12,18.06 z</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -17,8 +17,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/NoActionBarTheme" >
+
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.HomeActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
@@ -28,11 +29,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.PhotoDetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/NoActionBarTheme.Transparent" />
+
+        <activity
+            android:name=".activity.ProductsActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/product"
+            android:theme="@style/NoActionBarTheme.Transparent" />
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -51,10 +60,6 @@
             android:authorities="com.facebook.app.FacebookContentProvider464110687102972"
             android:exported="true" />
 
-        <activity
-            android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
     </application>
 
 </manifest>

@@ -87,7 +87,7 @@ public class CatsGridFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override

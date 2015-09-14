@@ -3,7 +3,6 @@ package com.appcutt.demo.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -15,58 +14,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AbsListView;
 
 import com.appcutt.demo.R;
-import com.appcutt.demo.views.ShareBarView;
-import com.appcutt.demo.views.adapters.CatsGridPagerAdappter;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
-import com.konifar.fab_transformation.FabTransformation;
 import com.appcutt.demo.utils.AppUtils;
+import com.appcutt.demo.views.adapters.CatsGridPagerAdappter;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements AbsListView.OnScrollListener {
+public class BaseActivity extends AppCompatActivity {
 
-    @Bind(R.id.navigation_view)
     NavigationView navigationView;
-    @Bind(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.tab_layout)
     TabLayout tabLayout;
-    @Bind(R.id.view_pager)
     ViewPager viewPager;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
-    @Bind(R.id.share_bar)
-    ShareBarView shareBar;
 
     private ActionBarDrawerToggle drawerToggle;
     private boolean isTransforming;
-    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
 
-        setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
 
         initNavigationView();
         initTabLayout();
     }
+
 
     private void initTabLayout() {
         CatsGridPagerAdappter adapter = new CatsGridPagerAdappter(getSupportFragmentManager(), this);
@@ -86,13 +62,14 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_product:
-                        AppUtils.showToast("product", MainActivity.this);
+                        AppUtils.showToast("product", BaseActivity.this);
                         return true;
                     case R.id.nav_contact:
-                        AppUtils.showToast("contact", MainActivity.this);
+                        AppUtils.showToast("contact", BaseActivity.this);
                         return true;
                     case R.id.nav_settings:
-                        AppUtils.showToast("settings", MainActivity.this);
+                        AppUtils.showToast("settings", BaseActivity.this);
+
                         return true;
                 }
 
@@ -135,74 +112,16 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @OnClick(R.id.fab)
-    void onClickFab() {
-        if (fab.getVisibility() == View.VISIBLE && !isTransforming) {
-            FabTransformation.with(fab)
-                    .setListener(new FabTransformation.OnTransformListener() {
-                        @Override
-                        public void onStartTransform() {
-                            isTransforming = true;
-                        }
-
-                        @Override
-                        public void onEndTransform() {
-                            isTransforming = false;
-                        }
-                    })
-                    .transformTo(shareBar);
-        }
-    }
-
     @Override
     public void onBackPressed() {
-        if (fab.getVisibility() != View.VISIBLE && !isTransforming) {
-            FabTransformation.with(fab)
-                    .setListener(new FabTransformation.OnTransformListener() {
-                        @Override
-                        public void onStartTransform() {
-                            isTransforming = true;
-                        }
 
-                        @Override
-                        public void onEndTransform() {
-                            isTransforming = false;
-                        }
-                    })
-                    .transformFrom(shareBar);
-            return;
-        }
         super.onBackPressed();
     }
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        //
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        if (fab.getVisibility() != View.VISIBLE && !isTransforming) {
-            FabTransformation.with(fab)
-                    .setListener(new FabTransformation.OnTransformListener() {
-                        @Override
-                        public void onStartTransform() {
-                            isTransforming = true;
-                        }
-
-                        @Override
-                        public void onEndTransform() {
-                            isTransforming = false;
-                        }
-                    })
-                    .transformFrom(shareBar);
-        }
-    }
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
