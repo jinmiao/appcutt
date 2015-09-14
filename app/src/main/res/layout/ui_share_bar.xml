@@ -6,7 +6,7 @@
     android:background="@color/accent100"
     android:orientation="horizontal">
 
-    <com.balysv.materialripple.MaterialRippleLayout
+    <com.appcutt.demo.layouts.MaterialRippleLayout
         android:id="@+id/btn_email"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -22,9 +22,9 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/ic_email_grey_600_24dp" />
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </com.appcutt.demo.layouts.MaterialRippleLayout>
 
-    <com.balysv.materialripple.MaterialRippleLayout
+    <com.appcutt.demo.layouts.MaterialRippleLayout
         android:id="@+id/btn_copy"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -40,9 +40,9 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/ic_content_copy_grey_600_24dp" />
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </com.appcutt.demo.layouts.MaterialRippleLayout>
 
-    <com.balysv.materialripple.MaterialRippleLayout
+    <com.appcutt.demo.layouts.MaterialRippleLayout
         android:id="@+id/btn_google_plus"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -58,9 +58,9 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/ic_google_plus_grey_600_24dp" />
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </com.appcutt.demo.layouts.MaterialRippleLayout>
 
-    <com.balysv.materialripple.MaterialRippleLayout
+    <com.appcutt.demo.layouts.MaterialRippleLayout
         android:id="@+id/btn_facebook"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -76,9 +76,9 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/ic_facebook_grey_600_24dp" />
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </com.appcutt.demo.layouts.MaterialRippleLayout>
 
-    <com.balysv.materialripple.MaterialRippleLayout
+    <com.appcutt.demo.layouts.MaterialRippleLayout
         android:id="@+id/btn_twitter"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -94,6 +94,6 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/ic_twitter_grey_600_24dp" />
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </com.appcutt.demo.layouts.MaterialRippleLayout>
 
 </LinearLayout>
