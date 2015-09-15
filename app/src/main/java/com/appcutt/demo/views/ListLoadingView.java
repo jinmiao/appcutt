@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.appcutt.demo.R;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -15,7 +17,7 @@ public class ListLoadingView extends LinearLayout {
 
     public ListLoadingView(Context context) {
         super(context);
-        inflate(context, com.appcutt.demo.R.layout.ui_list_loading, this);
+        inflate(context, R.layout.ui_list_loading, this);
         ButterKnife.bind(this);
     }
 

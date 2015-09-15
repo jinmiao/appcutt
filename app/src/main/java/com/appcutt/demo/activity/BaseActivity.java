@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 import com.appcutt.demo.R;
 import com.appcutt.demo.utils.AppUtils;
-import com.appcutt.demo.views.adapters.CatsGridPagerAdappter;
+import com.appcutt.demo.adapters.CatsGridPagerAdappter;
 
 
 public class BaseActivity extends AppCompatActivity {

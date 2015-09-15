@@ -1,11 +1,12 @@
-package com.appcutt.demo.views.adapters;
+package com.appcutt.demo.adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.appcutt.demo.views.fragments.CatsGridFragment;
+import com.appcutt.demo.R;
+import com.appcutt.demo.fragment.CatsGridFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,8 @@ public class CatsGridPagerAdappter extends FragmentPagerAdapter {
     public CatsGridPagerAdappter(FragmentManager fm, Context context) {
         super(fm);
         titles = new ArrayList<>();
-        titles.add(context.getString(com.appcutt.demo.R.string.popular));
-        titles.add(context.getString(com.appcutt.demo.R.string.news));
+        titles.add(context.getString(R.string.popular));
+        titles.add(context.getString(R.string.news));
 
         fragments = new ArrayList<>();
         fragments.add(CatsGridFragment.newInstance("250x400"));

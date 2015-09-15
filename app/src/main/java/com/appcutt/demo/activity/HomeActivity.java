@@ -54,10 +54,18 @@ public class HomeActivity extends AppCompatActivity implements AbsListView.OnScr
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction f1 = mFragmentManager.beginTransaction();
 
-        mFragment = HomeFragment.newInstance("main", "home");
+//        mFragment = HomeFragment.newInstance("main", "home");
+//
+//        f1.add(R.id.content_frame, mFragment, "home_tag");
+//        f1.commit();
 
-        f1.add(R.id.content_frame, mFragment, "home_tag");
-        f1.commit();
+        mFragment = ProductsFragment.newInstance("main", "product");
+
+        FragmentTransaction fp = mFragmentManager.beginTransaction();
+        fp.replace(R.id.content_frame, mFragment, "product_tag");
+        fp.commit();
+
+        navigationView.setCheckedItem(R.id.nav_product);
 
         initNavigationView();
     }

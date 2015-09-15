@@ -1,4 +1,4 @@
-package com.appcutt.demo.views.listeners;
+package com.appcutt.demo.listeners;
 
 import android.widget.AbsListView;
 

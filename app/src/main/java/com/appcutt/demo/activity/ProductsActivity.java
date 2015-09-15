@@ -21,7 +21,7 @@ import android.widget.AbsListView;
 import com.appcutt.demo.R;
 import com.appcutt.demo.utils.AppUtils;
 import com.appcutt.demo.views.ShareBarView;
-import com.appcutt.demo.views.adapters.CatsGridPagerAdappter;
+import com.appcutt.demo.adapters.CatsGridPagerAdappter;
 import com.konifar.fab_transformation.FabTransformation;
 
 import butterknife.Bind;

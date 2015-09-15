@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 import com.appcutt.demo.R;
-import com.appcutt.demo.views.adapters.CatsGridPagerAdappter;
+import com.appcutt.demo.adapters.CatsGridPagerAdappter;
 
 public class ProductsFragment extends Fragment implements AbsListView.OnScrollListener {
 

@@ -1,4 +1,4 @@
-package com.appcutt.demo.views.adapters;
+package com.appcutt.demo.adapters;
 
 import android.content.Context;
 import android.os.Build;
