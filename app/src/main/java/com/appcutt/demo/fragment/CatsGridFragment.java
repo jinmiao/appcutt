@@ -1,7 +1,10 @@
 package com.appcutt.demo.fragment;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,7 +17,8 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 
 import com.appcutt.demo.R;
-import com.appcutt.demo.adapters.PhotosArrayAdapter;
+import com.appcutt.demo.activity.ImagePreviewActivity;
+import com.appcutt.demo.adapters.PhotosAdapter;
 import com.appcutt.demo.listeners.OnLoadMoreScrollListener;
 import com.appcutt.demo.models.pojo.Photo;
 import com.appcutt.demo.views.ListLoadingView;
@@ -41,7 +45,7 @@ public class CatsGridFragment extends Fragment {
     @Bind(com.appcutt.demo.R.id.loading)
     FrameLayout loading;
 
-    private PhotosArrayAdapter adapter;
+    private PhotosAdapter adapter;
     private ListLoadingView loadingFooter;
     private String sort;
 
@@ -105,7 +109,7 @@ public class CatsGridFragment extends Fragment {
     }
 
     private void initGridView() {
-        adapter = new PhotosArrayAdapter(getActivity());
+        adapter = new PhotosAdapter(getActivity(), new ArrayList<Photo>());
         loadingFooter = new ListLoadingView(getActivity());
         gridView.addFooterView(loadingFooter);
         gridView.setAdapter(adapter);
@@ -115,9 +119,28 @@ public class CatsGridFragment extends Fragment {
     }
 
     @OnItemClick(com.appcutt.demo.R.id.grid_view)
-    void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Photo photo = adapter.getItem(position);
-        PhotoDetailActivity.start(getActivity(), view, photo);
+    void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        Photo photo = (Photo) adapter.getItem(position);
+//        PhotoDetailActivity.start(getActivity(), view, photo);
+
+        /**
+         * 图片浏览
+         */
+        Intent intent = new Intent();
+        intent.setClass(getContext(), ImagePreviewActivity.class);
+        intent.putStringArrayListExtra("imgs", adapter.getAllImages());
+        intent.putExtra("index", position);
+
+        if (android.os.Build.VERSION.SDK_INT > 15) {
+            // Create a scale-up animation that originates at the button
+            // being pressed.
+            ActivityOptions opts = ActivityOptions.makeScaleUpAnimation(
+                    v, 0, 0, v.getWidth(), v.getHeight());
+            // Request the activity be started, using the custom animation options.
+            getActivity().startActivity(intent, opts.toBundle());
+        } else {
+            getActivity().startActivity(intent);
+        }
     }
 
     private void showList(final int page) {
@@ -125,45 +148,55 @@ public class CatsGridFragment extends Fragment {
 
         if (page > 1) loadingFooter.switchVisible(true);
 
-        try {
-            String[] img3 = getResources().getAssets().list(sort);
-            List<Photo> photos3 = new ArrayList<Photo>();
-            for(int i=0;i < img3.length; i++) {
-                String imgFile = img3[i];
-                String imgName = imgFile.substring(0,imgFile.indexOf("."));
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
 
-                Photo photo = new Photo();
-                photo.setId(imgName);
-                photo.setTitle(imgName);
-                photo.setImageUrl("file:///android_asset/" + sort + "/" + imgFile);
+                try {
+                    String[] img3 = getResources().getAssets().list(sort);
+                    List<Photo> photos3 = new ArrayList<Photo>();
+                    for(int i=0;i < img3.length; i++) {
+                        String imgFile = img3[i];
+                        String imgName = imgFile.substring(0,imgFile.indexOf("."));
 
-                photos3.add(photo);
+                        Photo photo = new Photo();
+                        photo.setId(imgName);
+                        photo.setTitle(imgName);
+//                photo.setImageUrl("file:///android_asset/" + sort + "/" + imgFile);
 
-                Log.d("showlist i:"+i, photo.getImageUrl());
+                        photo.setImageUrl("assets://" + sort + "/" + imgFile);
+
+                        photos3.add(photo);
+
+                        Log.d("showlist i:"+i, photo.getImageUrl());
+                    }
+
+                    if (swipeRefresh.isRefreshing()) {
+                        swipeRefresh.setRefreshing(false);
+                        adapter.clearData();
+                    }
+
+                    Log.d("showlist photos3 size:", photos3.size()+"");
+                    Log.d("showlist adapter size:", adapter.getCount() + "");
+
+                    adapter.clearData();
+                    adapter.addData(photos3);
+
+                    if (loading.getVisibility() == View.VISIBLE) {
+                        initListViewScrollListener();
+                        loading.setVisibility(View.GONE);
+                    }
+
+                    loadingFooter.switchVisible(false);
+
+                    isLoading = true;
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-
-            if (swipeRefresh.isRefreshing()) {
-                swipeRefresh.setRefreshing(false);
-                adapter.clear();
-            }
-
-            Log.d("showlist photos3 size:", photos3.size()+"");
-            Log.d("showlist adapter size:", adapter.getCount() + "");
-
-            adapter.addAll(photos3);
-
-            if (loading.getVisibility() == View.VISIBLE) {
-                initListViewScrollListener();
-                loading.setVisibility(View.GONE);
-            }
-
-            loadingFooter.switchVisible(false);
-
-            isLoading = true;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     private void initListViewScrollListener() {

@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
+import com.appcutt.demo.libs.imageloader.com.nostra13.universalimageloader.core.ImageLoader;
 import com.appcutt.demo.models.pojo.Photo;
 import com.appcutt.demo.R;
 import com.appcutt.demo.views.AspectRatioImageView;
@@ -25,8 +26,12 @@ public class PhotosArrayAdapter extends ArrayAdapter<Photo> {
 
     private int lastPosition = -1;
 
-    public PhotosArrayAdapter(Context context) {
+    private List<Photo> mDatas = new ArrayList<Photo>();
+
+    public PhotosArrayAdapter(Context context, List<Photo> datas) {
         super(context, R.layout.item_photo, new ArrayList<Photo>());
+
+        mDatas = datas;
     }
 
     @Override
@@ -63,16 +68,21 @@ public class PhotosArrayAdapter extends ArrayAdapter<Photo> {
         String imageUrl = photo.getImageUrl();
 
         if (holder.imgPreview.getTag() == null || !holder.imgPreview.getTag().equals(imageUrl)) {
-            Picasso.with(getContext())
-                    .load(imageUrl)
-                    .placeholder(R.color.theme50)
-                    .into(holder.imgPreview);
+//            Picasso.with(getContext())
+//                    .load(imageUrl)
+//                    .placeholder(R.color.theme50)
+//                    .into(holder.imgPreview);
+
+
+            ImageLoader.getInstance().displayImage(imageUrl, holder.imgPreview);
             holder.imgPreview.setTag(imageUrl);
         }
     }
 
     public void addAll(List<Photo> photos) {
         if (photos == null) return;
+
+        mDatas = photos;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             super.addAll(photos);

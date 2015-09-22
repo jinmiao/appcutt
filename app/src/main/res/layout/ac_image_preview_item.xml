@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.appcutt.demo.views.previewimage.TouchImageView
+        android:id="@+id/pic"
+        android:maxWidth="1000dip"
+        android:maxHeight="1000dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/ac_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

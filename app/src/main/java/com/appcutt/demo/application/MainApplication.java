@@ -3,8 +3,7 @@ package com.appcutt.demo.application;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+import com.appcutt.demo.imageloader.ImageLoaderUtil;
 
 public class MainApplication extends Application {
 
@@ -16,7 +15,9 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+
+        // 初始化图片缓存
+        ImageLoaderUtil.initImageLoader(this);
     }
 
 }
