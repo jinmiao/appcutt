@@ -93,9 +93,9 @@ public class PhotosAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
 
-        final ViewHolder viewHolder;
+        ViewHolder viewHolder;
 
-        if (convertView == null) {
+        if (convertView == null || convertView.getTag() == null) {
 
             convertView = mInflater.inflate(R.layout.item_photo, null);
 
@@ -105,6 +105,7 @@ public class PhotosAdapter extends BaseAdapter {
             viewHolder.imageView = (AspectRatioImageView) convertView.findViewById(R.id.img_preview);
 
             convertView.setTag(viewHolder);
+
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -113,7 +114,17 @@ public class PhotosAdapter extends BaseAdapter {
         final Photo data = mData.get(position);
 
         Log.d("photos adapter:", data.getImageUrl()+", pos:"+position);
-        ImageLoader.getInstance().displayImage(data.getImageUrl(), viewHolder.imageView, AppcuttDisplayImageOptions.DEFAULT_DISPLAY_IMAGE_OPTIONS);
+
+        if (viewHolder.imageView == null) {
+            Log.d("photos adapter:", "viewHolder.imageView == null 11111111");
+        }
+
+        ImageLoader
+                .getInstance()
+                .displayImage(
+                        data.getImageUrl(),
+                        viewHolder.imageView,
+                        AppcuttDisplayImageOptions.DEFAULT_DISPLAY_IMAGE_OPTIONS);
 
         /**
          * 设置分类菜单的高
@@ -142,7 +153,7 @@ public class PhotosAdapter extends BaseAdapter {
     }
 
 
-    class ViewHolder {
+    static class ViewHolder {
 
         View rootView;
 

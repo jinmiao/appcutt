@@ -15,7 +15,7 @@ public class AppcuttDisplayImageOptions {
      * 默认图片显示配置
      */
     public static final DisplayImageOptions DEFAULT_DISPLAY_IMAGE_OPTIONS = new DisplayImageOptions.Builder()
-            .showImageOnLoading(R.drawable.ac_loading).bitmapConfig(Bitmap.Config.RGB_565)
+            .showImageOnLoading(R.drawable.ac_ic_loading).bitmapConfig(Bitmap.Config.RGB_565)
             .imageScaleType(ImageScaleType.IN_SAMPLE_INT).cacheOnDisk(true).build();
 
 }
